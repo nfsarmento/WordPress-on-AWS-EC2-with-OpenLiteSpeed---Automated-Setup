@@ -81,54 +81,54 @@
 
 <p>Add these DNS records at your domain registrar:</p>
 
-[php]A    @      YOUR_ELASTIC_IP
-A    www    YOUR_ELASTIC_IP[/php]
+A    @      YOUR_ELASTIC_IP
+A    www    YOUR_ELASTIC_IP
 
 <p><strong>Wait 5-10 minutes for DNS propagation</strong></p>
 
 <h5>Step 3: Connect to Server</h5>
 
-[php]chmod 400 your-key.pem
-ssh -i your-key.pem ubuntu@YOUR_ELASTIC_IP[/php]
+chmod 400 your-key.pem
+ssh -i your-key.pem ubuntu@YOUR_ELASTIC_IP
 
 <h5>Step 4: Upload and Run Script</h5>
 
 <p><strong>Option A: Direct Download (if script is hosted)</strong></p>
 
-[php]wget https://your-server.com/wordpress-aws-openlitespeed-setup.sh
+wget https://your-server.com/wordpress-aws-openlitespeed-setup.sh
 chmod +x wordpress-aws-openlitespeed-setup.sh
-./wordpress-aws-openlitespeed-setup.sh[/php]
+./wordpress-aws-openlitespeed-setup.sh
 
 <p><strong>Option B: Copy and Paste</strong></p>
 
-[php]nano wordpress-aws-openlitespeed-setup.sh
+nano wordpress-aws-openlitespeed-setup.sh
 # Paste the script content
 # Save: Ctrl + X → Y → Enter
 
 chmod +x wordpress-aws-openlitespeed-setup.sh
-./wordpress-aws-openlitespeed-setup.sh[/php]
+./wordpress-aws-openlitespeed-setup.sh
 
 <p><strong>Option C: SCP Upload from Local Machine</strong></p>
 
-[php]# On your local machine
+# On your local machine
 scp -i your-key.pem wordpress-aws-openlitespeed-setup.sh ubuntu@YOUR_ELASTIC_IP:/home/ubuntu/
 
 # Then SSH and run
 ssh -i your-key.pem ubuntu@YOUR_ELASTIC_IP
 chmod +x wordpress-aws-openlitespeed-setup.sh
-./wordpress-aws-openlitespeed-setup.sh[/php]
+./wordpress-aws-openlitespeed-setup.sh
 
 <h5>Step 5: Follow Prompts</h5>
 
 <p>The script will ask you for:</p>
 
-[php]Domain name: example.com
+Domain name: example.com
 Database name: wordpress_db
 Database user: wp_user
 Database password: [strong-password]
 WebAdmin username: admin
 WebAdmin password: [strong-password]
-SSL email: your-email@example.com[/php]
+SSL email: your-email@example.com
 
 <p><strong>Installation takes 10-15 minutes</strong></p>
 
@@ -203,11 +203,11 @@ SSL email: your-email@example.com[/php]
 
 <p><strong>Create SSH Tunnel:</strong></p>
 
-[php]ssh -i your-key.pem -L 7080:localhost:7080 ubuntu@YOUR_ELASTIC_IP[/php]
+ssh -i your-key.pem -L 7080:localhost:7080 ubuntu@YOUR_ELASTIC_IP
 
 <p><strong>Access in Browser:</strong></p>
 
-[php]http://localhost:7080[/php]
+http://localhost:7080
 
 <p><strong>Credentials:</strong> (the ones you set during installation)</p>
 
@@ -215,7 +215,7 @@ SSL email: your-email@example.com[/php]
 
 <p>Run the status check script:</p>
 
-[php]/home/ubuntu/check-status.sh[/php]
+/home/ubuntu/check-status.sh
 
 <p>You should see all services as "active (running)"</p>
 
@@ -265,14 +265,14 @@ SSL email: your-email@example.com[/php]
 
 <h5>Check Security Status:</h5>
 
-[php]# Check firewall
+# Check firewall
 sudo ufw status
 
 # Check Fail2Ban
 sudo fail2ban-client status
 
 # Check SSL grade
-# Visit: https://www.ssllabs.com/ssltest/[/php]
+# Visit: https://www.ssllabs.com/ssltest/
 
 <h4 id="step7">Maintenance & Monitoring</h4>
 
@@ -284,22 +284,22 @@ sudo fail2ban-client status
 
 <p>Manual backup:</p>
 
-[php]/home/ubuntu/backup-wordpress.sh[/php]
+/home/ubuntu/backup-wordpress.sh
 
 <h5>Check for Updates</h5>
 
-[php]# Check if reboot needed
+# Check if reboot needed
 cat /var/run/reboot-required
 
 # See what needs reboot
 cat /var/run/reboot-required.pkgs
 
 # Manual reboot (when needed)
-sudo reboot[/php]
+sudo reboot
 
 <h5>View Logs</h5>
 
-[php]# WordPress errors
+# WordPress errors
 sudo tail -50 /usr/local/lsws/your-domain/logs/error.log
 
 # Access logs
@@ -309,11 +309,11 @@ sudo tail -50 /usr/local/lsws/your-domain/logs/access.log
 sudo tail -50 /var/log/unattended-upgrades/unattended-upgrades.log
 
 # Fail2Ban
-sudo tail -50 /var/log/fail2ban.log[/php]
+sudo tail -50 /var/log/fail2ban.log
 
 <h5>Restart Services</h5>
 
-[php]# Restart OpenLiteSpeed
+# Restart OpenLiteSpeed
 sudo /usr/local/lsws/bin/lswsctrl restart
 
 # Restart MariaDB
@@ -323,24 +323,24 @@ sudo systemctl restart mariadb
 sudo systemctl restart redis-server
 
 # Restart all
-sudo systemctl restart lshttpd mariadb redis-server[/php]
+sudo systemctl restart lshttpd mariadb redis-server
 
 <h4 id="step8">Troubleshooting</h4>
 
 <h5>Website Not Loading</h5>
 
-[php]# Check if services running
+# Check if services running
 /home/ubuntu/check-status.sh
 
 # Restart OpenLiteSpeed
 sudo /usr/local/lsws/bin/lswsctrl restart
 
 # Check error logs
-sudo tail -100 /usr/local/lsws/your-domain/logs/error.log[/php]
+sudo tail -100 /usr/local/lsws/your-domain/logs/error.log
 
 <h5>SSL Certificate Issues</h5>
 
-[php]# Renew manually
+# Renew manually
 sudo certbot renew --force-renewal
 
 # Copy to OpenLiteSpeed
@@ -348,11 +348,11 @@ sudo cp /etc/letsencrypt/live/YOUR_DOMAIN/fullchain.pem /usr/local/lsws/conf/cer
 sudo cp /etc/letsencrypt/live/YOUR_DOMAIN/privkey.pem /usr/local/lsws/conf/cert/your-domain/key.pem
 
 # Restart
-sudo /usr/local/lsws/bin/lswsctrl restart[/php]
+sudo /usr/local/lsws/bin/lswsctrl restart
 
 <h5>Can't Access WebAdmin</h5>
 
-[php]# Check if listening on localhost
+# Check if listening on localhost
 sudo ss -tlnp | grep 7080
 
 # Should show: 127.0.0.1:7080
@@ -360,11 +360,11 @@ sudo ss -tlnp | grep 7080
 # Create SSH tunnel again
 ssh -i your-key.pem -L 7080:localhost:7080 ubuntu@YOUR_ELASTIC_IP
 
-# Access: http://localhost:7080[/php]
+# Access: http://localhost:7080
 
 <h5>Out of Disk Space</h5>
 
-[php]# Check disk usage
+# Check disk usage
 df -h
 
 # Clear old backups
@@ -375,7 +375,7 @@ rm -f /home/ubuntu/backups/wordpress-*
 sudo rm -f /usr/local/lsws/*/logs/*.log.*
 
 # Clear package cache
-sudo apt clean[/php]
+sudo apt clean
 
 <h4 id="step9">Scaling & Performance</h4>
 
@@ -401,11 +401,11 @@ sudo apt clean[/php]
 
 <h5>Database Optimization</h5>
 
-[php]# Optimize tables
+# Optimize tables
 sudo mysql -p
 USE your_database_name;
 OPTIMIZE TABLE wp_posts, wp_postmeta, wp_options;
-EXIT;[/php]
+EXIT;
 
 <h4 id="step10">Cost Breakdown</h4>
 
