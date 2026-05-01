@@ -102,18 +102,18 @@ chmod +x wordpress-aws-openlitespeed-setup.sh
 <p><strong>Option B: Copy and Paste</strong></p>
 
 nano wordpress-aws-openlitespeed-setup.sh
-# Paste the script content
-# Save: Ctrl + X → Y → Enter
+- Paste the script content
+- Save: Ctrl + X → Y → Enter
 
 chmod +x wordpress-aws-openlitespeed-setup.sh
 ./wordpress-aws-openlitespeed-setup.sh
 
 <p><strong>Option C: SCP Upload from Local Machine</strong></p>
 
-# On your local machine
+- On your local machine
 scp -i your-key.pem wordpress-aws-openlitespeed-setup.sh ubuntu@YOUR_ELASTIC_IP:/home/ubuntu/
 
-# Then SSH and run
+- Then SSH and run
 ssh -i your-key.pem ubuntu@YOUR_ELASTIC_IP
 chmod +x wordpress-aws-openlitespeed-setup.sh
 ./wordpress-aws-openlitespeed-setup.sh
@@ -265,14 +265,14 @@ http://localhost:7080
 
 <h5>Check Security Status:</h5>
 
-# Check firewall
+- Check firewall
 sudo ufw status
 
-# Check Fail2Ban
+- Check Fail2Ban
 sudo fail2ban-client status
 
-# Check SSL grade
-# Visit: https://www.ssllabs.com/ssltest/
+- Check SSL grade
+- Visit: https://www.ssllabs.com/ssltest/
 
 <h5 id="step7">Maintenance & Monitoring</h5>
 
@@ -288,93 +288,93 @@ sudo fail2ban-client status
 
 <h5>Check for Updates</h5>
 
-# Check if reboot needed
+- Check if reboot needed
 cat /var/run/reboot-required
 
-# See what needs reboot
+- See what needs reboot
 cat /var/run/reboot-required.pkgs
 
-# Manual reboot (when needed)
+- Manual reboot (when needed)
 sudo reboot
 
 <h5>View Logs</h5>
 
-# WordPress errors
+- WordPress errors
 sudo tail -50 /usr/local/lsws/your-domain/logs/error.log
 
-# Access logs
+- Access logs
 sudo tail -50 /usr/local/lsws/your-domain/logs/access.log
 
-# Automatic updates
+- Automatic updates
 sudo tail -50 /var/log/unattended-upgrades/unattended-upgrades.log
 
-# Fail2Ban
+- Fail2Ban
 sudo tail -50 /var/log/fail2ban.log
 
 <h5>Restart Services</h5>
 
-# Restart OpenLiteSpeed
+- Restart OpenLiteSpeed
 sudo /usr/local/lsws/bin/lswsctrl restart
 
-# Restart MariaDB
+- Restart MariaDB
 sudo systemctl restart mariadb
 
-# Restart Redis
+- Restart Redis
 sudo systemctl restart redis-server
 
-# Restart all
+- Restart all
 sudo systemctl restart lshttpd mariadb redis-server
 
 <h5 id="step8">Troubleshooting</h5>
 
 <h5>Website Not Loading</h5>
 
-# Check if services running
+- Check if services running
 /home/ubuntu/check-status.sh
 
-# Restart OpenLiteSpeed
+- Restart OpenLiteSpeed
 sudo /usr/local/lsws/bin/lswsctrl restart
 
-# Check error logs
+- Check error logs
 sudo tail -100 /usr/local/lsws/your-domain/logs/error.log
 
 <h5>SSL Certificate Issues</h5>
 
-# Renew manually
+- Renew manually
 sudo certbot renew --force-renewal
 
-# Copy to OpenLiteSpeed
+- Copy to OpenLiteSpeed
 sudo cp /etc/letsencrypt/live/YOUR_DOMAIN/fullchain.pem /usr/local/lsws/conf/cert/your-domain/
 sudo cp /etc/letsencrypt/live/YOUR_DOMAIN/privkey.pem /usr/local/lsws/conf/cert/your-domain/key.pem
 
-# Restart
+- Restart
 sudo /usr/local/lsws/bin/lswsctrl restart
 
 <h5>Can't Access WebAdmin</h5>
 
-# Check if listening on localhost
+- Check if listening on localhost
 sudo ss -tlnp | grep 7080
 
-# Should show: 127.0.0.1:7080
+- Should show: 127.0.0.1:7080
 
-# Create SSH tunnel again
+- Create SSH tunnel again
 ssh -i your-key.pem -L 7080:localhost:7080 ubuntu@YOUR_ELASTIC_IP
 
-# Access: http://localhost:7080
+- Access: http://localhost:7080
 
 <h5>Out of Disk Space</h5>
 
-# Check disk usage
+- Check disk usage
 df -h
 
-# Clear old backups
+- Clear old backups
 rm -f /home/ubuntu/backups/db-*
 rm -f /home/ubuntu/backups/wordpress-*
 
-# Clear old logs
+- Clear old logs
 sudo rm -f /usr/local/lsws/*/logs/*.log.*
 
-# Clear package cache
+- Clear package cache
 sudo apt clean
 
 <h5 id="step9">Scaling & Performance</h5>
@@ -401,7 +401,7 @@ sudo apt clean
 
 <h5>Database Optimization</h5>
 
-# Optimize tables
+- Optimize tables
 sudo mysql -p
 USE your_database_name;
 OPTIMIZE TABLE wp_posts, wp_postmeta, wp_options;
