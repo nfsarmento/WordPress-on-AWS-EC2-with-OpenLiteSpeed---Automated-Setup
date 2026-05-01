@@ -1,8 +1,8 @@
-<h4 id="introduction">🚀 WordPress on AWS EC2 with OpenLiteSpeed - Automated Setup</h4>
+<h5 id="introduction">🚀 WordPress on AWS EC2 with OpenLiteSpeed - Automated Setup</h5>
 
 <p><strong>Complete automated installation script for production-grade WordPress hosting on AWS EC2</strong></p>
 
-<h4 id="step1">What This Script Does</h4>
+<h5 id="step1">What This Script Does</h5>
 
 <p>This bash script automates the complete installation and configuration of:</p>
 
@@ -23,7 +23,7 @@
 <li>✅ <strong>Helper Scripts</strong> - Status checks and maintenance tools</li>
 </ul>
 
-<h4 id="step2">Prerequisites</h4>
+<h5 id="step2">Prerequisites</h5>
 
 <h5>1. AWS EC2 Instance</h5>
 
@@ -57,7 +57,7 @@
 <li>Download your <code>.pem</code> key file from AWS</li>
 </ul>
 
-<h4 id="step3">Installation Instructions</h4>
+<h5 id="step3">Installation Instructions</h5>
 
 <h5>Step 1: Launch EC2 Instance</h5>
 
@@ -132,7 +132,7 @@ SSL email: your-email@example.com
 
 <p><strong>Installation takes 10-15 minutes</strong></p>
 
-<h4 id="step4">Post-Installation Steps</h4>
+<h5 id="step4">Post-Installation Steps</h5>
 
 <h5>1. Complete WordPress Installation</h5>
 
@@ -219,7 +219,7 @@ http://localhost:7080
 
 <p>You should see all services as "active (running)"</p>
 
-<h4 id="step5">Performance Optimization</h4>
+<h5 id="step5">Performance Optimization</h5>
 
 <h5>PageSpeed 100/100 Setup</h5>
 
@@ -249,7 +249,7 @@ http://localhost:7080
 <li>Should achieve 90-100 scores</li>
 </ul>
 
-<h4 id="step6">Security Features Included</h4>
+<h5 id="step6">Security Features Included</h5>
 
 <h5>What's Protected:</h5>
 
@@ -274,7 +274,7 @@ sudo fail2ban-client status
 # Check SSL grade
 # Visit: https://www.ssllabs.com/ssltest/
 
-<h4 id="step7">Maintenance & Monitoring</h4>
+<h5 id="step7">Maintenance & Monitoring</h5>
 
 <h5>Daily Automated Backups</h5>
 
@@ -325,7 +325,7 @@ sudo systemctl restart redis-server
 # Restart all
 sudo systemctl restart lshttpd mariadb redis-server
 
-<h4 id="step8">Troubleshooting</h4>
+<h5 id="step8">Troubleshooting</h5>
 
 <h5>Website Not Loading</h5>
 
@@ -377,7 +377,7 @@ sudo rm -f /usr/local/lsws/*/logs/*.log.*
 # Clear package cache
 sudo apt clean
 
-<h4 id="step9">Scaling & Performance</h4>
+<h5 id="step9">Scaling & Performance</h5>
 
 <h5>Upgrade Instance Type</h5>
 
@@ -407,7 +407,7 @@ USE your_database_name;
 OPTIMIZE TABLE wp_posts, wp_postmeta, wp_options;
 EXIT;
 
-<h4 id="step10">Cost Breakdown</h4>
+<h5 id="step10">Cost Breakdown</h5>
 
 <h5>Free Tier (First 12 Months)</h5>
 
@@ -437,7 +437,7 @@ EXIT;
 <li>Enable caching (LiteSpeed Cache plugin)</li>
 </ul>
 
-<h4 id="step11">Support & Resources</h4>
+<h5 id="step11">Support & Resources</h5>
 
 <h5>Official Documentation</h5>
 
@@ -456,7 +456,7 @@ EXIT;
 <li><strong>Security Headers:</strong> <a href="https://securityheaders.com/" target="_blank">https://securityheaders.com/</a></li>
 </ul>
 
-<h4 id="step12">Script Details</h4>
+<h5 id="step12">Script Details</h5>
 
 <ul>
 <li><strong>Version:</strong> 1.0</li>
@@ -466,7 +466,7 @@ EXIT;
 <li><strong>Execution Time:</strong> ~10-15 minutes</li>
 </ul>
 
-<h4 id="step13">Installation Checklist</h4>
+<h5 id="step13">Installation Checklist</h5>
 
 <p>After installation, verify:</p>
 
@@ -483,7 +483,7 @@ EXIT;
 <li>☐ Automatic updates enabled</li>
 </ul>
 
-<h4 id="conclusion">You're All Set!</h4>
+<h5 id="conclusion">You're All Set!</h5>
 
 <p>Your WordPress site is now running on a production-grade infrastructure with:</p>
 
